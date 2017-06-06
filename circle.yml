@@ -1,0 +1,28 @@
+machine:
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+  node:
+    version: 6.9.1
+## Customize checkout
+general:
+  branches:
+    only:
+    - development
+
+## Customize dependencies
+dependencies:
+  pre:
+    - npm install -g cordova ionic@latest
+  override:
+    - npm install
+
+  # we automatically cache and restore many dependencies between
+  # builds. If you need to, you can add custom paths to cache:
+  cache_directories:
+    - "~/build_cache" # relative to the user's home directory
+
+compile:
+  override:
+    - ionic cordova platform add android
+    - ionic cordova build android
