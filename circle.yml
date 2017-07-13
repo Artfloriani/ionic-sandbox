@@ -14,8 +14,9 @@ general:
 dependencies:
   pre:
     - npm install -g cordova ionic@latest
+    - npm install @ionic/cli-plugin-ionic-angular @ionic/cli-plugin-ionic-angular
   override:
-    - npm install
+    - npm install 
 
   # we automatically cache and restore many dependencies between
   # builds. If you need to, you can add custom paths to cache:
@@ -24,5 +25,5 @@ dependencies:
 
 compile:
   override:
-    - ionic cordova platform add android
-    - ionic cordova build android
+    - ionic cordova platform add android --no-interactive
+    - ionic cordova build android --no-interactive
