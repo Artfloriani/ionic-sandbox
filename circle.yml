@@ -19,18 +19,14 @@ dependencies:
     - /usr/local/android-sdk-linux/tools
     - /usr/local/android-sdk-linux/build-tools/24.0.1
 
-  post:
-    - mkdir www
-    - ionic cordova platform add android@^6.2.3
-
-compile:
   override:
-    - ionic cordova build android
+    - mkdir www
+    - cordova platform add android@^6.2.3
 
-test:
-  pre:
+  post:
     - npm install
 
-  post:
+compile:    
+  override:
     - ionic cordova build android
     - cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
