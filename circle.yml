@@ -3,7 +3,7 @@ machine:
   java:
     version: 'oraclejdk8'
   node:
-    version: v6.10.3
+    version: v6.9.1
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
 
@@ -11,7 +11,6 @@ machine:
 ## Setup dependencies
 dependencies:
   pre:
-    - npm install -g ionic cordova
     - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
     - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
 
@@ -20,11 +19,10 @@ dependencies:
     - /usr/local/android-sdk-linux/build-tools/24.0.1
 
   override:
-    - mkdir www
-    - cordova platform add android@^6.2.3
-
-  post:
+    - npm install -g ionic cordova
     - npm install
+    - ionic state restore
+    - ionic prepare
 
 compile:    
   override:
