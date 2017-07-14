@@ -14,7 +14,6 @@ dependencies:
     - npm install -g ionic
     - npm install -g cordova
     - npm install
-    - 
     - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
     - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
 
@@ -24,6 +23,6 @@ dependencies:
 
 test:    
   pre:
-    - ionic cordova platform rm android
+    - ionic cordova platform add android
   override:
     - ionic cordova build android
