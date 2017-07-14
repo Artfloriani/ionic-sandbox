@@ -11,6 +11,9 @@ machine:
 ## Setup dependencies
 dependencies:
   pre:
+    - npm install -g ionic
+    - npm install -g cordova
+    - npm install
     - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
     - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
 
@@ -18,12 +21,7 @@ dependencies:
     - /usr/local/android-sdk-linux/tools
     - /usr/local/android-sdk-linux/build-tools/24.0.1
 
+test:    
   override:
-    - npm install -g ionic cordova
-    - npm install
-    - ionic cordova platform add android
-
-compile:    
-  override:
-    - cordova build android
+    - ionic cordva build android
     - cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
