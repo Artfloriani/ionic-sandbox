@@ -25,4 +25,6 @@ test:
   pre:
     - ionic cordova platform add android
   override:
+    - gulp tslint
+  post:
     - ionic cordova build android
